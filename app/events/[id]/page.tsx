@@ -4,9 +4,8 @@ import { motion } from 'framer-motion';
 import { notFound } from 'next/navigation';
 import { Calendar, MapPin, Tag, Users, Clock, ArrowLeft, Share2, Heart } from 'lucide-react';
 import Link from 'next/link';
-import EventCarousel from '@/components/EventCarousel';
-import { events } from '@/data/events';
-import { Event } from '@/types/events';
+import EventCarousel from '@/app/components/EventCarousel';
+import { events } from '@/app/data/events';
 
 interface EventPageProps {
   params: { id: string };
@@ -32,14 +31,14 @@ export default function EventPage({ params }: EventPageProps) {
       >
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
-            <Link 
+            <Link
               href="/events"
               className="flex items-center gap-2 text-gray-600 hover:text-purple-600 transition-colors duration-300"
             >
               <ArrowLeft className="w-5 h-5" />
               <span>Back to Events</span>
             </Link>
-            
+
             <div className="flex items-center gap-3">
               <motion.button
                 whileHover={{ scale: 1.1 }}
@@ -85,15 +84,15 @@ export default function EventPage({ params }: EventPageProps) {
                   Featured Event
                 </motion.div>
               )}
-              
+
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
                 {event.title}
               </h1>
-              
+
               <p className="text-xl text-gray-600 mb-8 leading-relaxed">
                 {event.description}
               </p>
-              
+
               <div className="space-y-4 mb-8">
                 <div className="flex items-center gap-4">
                   <div className="p-3 bg-purple-100 rounded-full">
@@ -104,7 +103,7 @@ export default function EventPage({ params }: EventPageProps) {
                     <p className="font-semibold text-gray-900">{event.date}</p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-center gap-4">
                   <div className="p-3 bg-purple-100 rounded-full">
                     <MapPin className="w-6 h-6 text-purple-600" />
@@ -114,7 +113,7 @@ export default function EventPage({ params }: EventPageProps) {
                     <p className="font-semibold text-gray-900">{event.location}</p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-center gap-4">
                   <div className="p-3 bg-purple-100 rounded-full">
                     <Tag className="w-6 h-6 text-purple-600" />
@@ -124,7 +123,7 @@ export default function EventPage({ params }: EventPageProps) {
                     <p className="font-semibold text-gray-900">{event.category}</p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-center gap-4">
                   <div className="p-3 bg-purple-100 rounded-full">
                     <Users className="w-6 h-6 text-purple-600" />
@@ -135,7 +134,7 @@ export default function EventPage({ params }: EventPageProps) {
                   </div>
                 </div>
               </div>
-              
+
               <div className="flex flex-col sm:flex-row gap-4">
                 <motion.button
                   whileHover={{ scale: 1.02 }}
@@ -153,7 +152,7 @@ export default function EventPage({ params }: EventPageProps) {
                 </motion.button>
               </div>
             </motion.div>
-            
+
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
@@ -182,7 +181,7 @@ export default function EventPage({ params }: EventPageProps) {
             className="max-w-4xl mx-auto"
           >
             <h2 className="text-3xl font-bold text-gray-900 mb-8">Event Details</h2>
-            
+
             <div className="grid md:grid-cols-2 gap-8 mb-12">
               <div className="space-y-6">
                 <div>
@@ -210,7 +209,7 @@ export default function EventPage({ params }: EventPageProps) {
                     </li>
                   </ul>
                 </div>
-                
+
                 <div>
                   <h3 className="text-xl font-semibold text-gray-900 mb-3">Event Schedule</h3>
                   <div className="space-y-3">
@@ -238,7 +237,7 @@ export default function EventPage({ params }: EventPageProps) {
                   </div>
                 </div>
               </div>
-              
+
               <div className="space-y-6">
                 <div>
                   <h3 className="text-xl font-semibold text-gray-900 mb-3">Pricing Options</h3>
@@ -259,7 +258,7 @@ export default function EventPage({ params }: EventPageProps) {
                     </div>
                   </div>
                 </div>
-                
+
                 <div>
                   <h3 className="text-xl font-semibold text-gray-900 mb-3">Venue Features</h3>
                   <ul className="space-y-2 text-gray-600">
@@ -283,7 +282,7 @@ export default function EventPage({ params }: EventPageProps) {
                 </div>
               </div>
             </div>
-            
+
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -327,20 +326,20 @@ export default function EventPage({ params }: EventPageProps) {
               <h2 className="text-3xl font-bold text-gray-900 mb-4">Related Events</h2>
               <p className="text-lg text-gray-600">Explore more events in the {event.category} category</p>
             </motion.div>
-            
+
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {relatedEvents.map((relatedEvent, index) => (
                 <motion.div
                   key={relatedEvent.id}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ 
-                    duration: 0.6, 
-                    delay: index * 0.1, 
-                    ease: 'easeOut' 
+                  transition={{
+                    duration: 0.6,
+                    delay: index * 0.1,
+                    ease: 'easeOut'
                   }}
                   viewport={{ once: true }}
-                  whileHover={{ 
+                  whileHover={{
                     y: -8,
                     scale: 1.02,
                     transition: { duration: 0.3, ease: 'easeOut' }
@@ -363,7 +362,7 @@ export default function EventPage({ params }: EventPageProps) {
                         </div>
                       )}
                     </div>
-                    
+
                     <div className="p-6">
                       <div className="flex items-start justify-between mb-3">
                         <h3 className="text-xl font-bold text-gray-900 group-hover:text-purple-600 transition-colors duration-300">
@@ -373,11 +372,11 @@ export default function EventPage({ params }: EventPageProps) {
                           {relatedEvent.category}
                         </span>
                       </div>
-                      
+
                       <p className="text-gray-600 mb-4 line-clamp-2">
                         {relatedEvent.description}
                       </p>
-                      
+
                       <div className="space-y-2 mb-4">
                         <div className="flex items-center gap-2 text-gray-700">
                           <Calendar className="w-4 h-4 text-purple-500" />
@@ -388,7 +387,7 @@ export default function EventPage({ params }: EventPageProps) {
                           <span className="text-sm">{relatedEvent.location}</span>
                         </div>
                       </div>
-                      
+
                       <button className="w-full py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold rounded-xl hover:from-purple-700 hover:to-pink-700 transition-all duration-300">
                         View Details
                       </button>

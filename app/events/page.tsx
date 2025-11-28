@@ -3,12 +3,12 @@
 import { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { Search, Filter, Calendar, MapPin } from 'lucide-react';
-import EventHeader from '@/components/EventHeader';
-import EventList from '@/components/EventList';
-import EventDetails from '@/components/EventDetails';
-import Footer from '@/components/Footer';
-import { events } from '@/data/events';
-import { Event } from '@/types/events';
+import EventHeader from '../components/EventHeader';
+import EventList from '../components/EventList';
+import EventDetails from '../components/EventDetails';
+import Footer from '../components/Footer';
+import { events } from '../data/events';
+// import { Event } from '@/types/events';
 
 export default function EventsPage() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -30,9 +30,9 @@ export default function EventsPage() {
       const matchesSearch = event.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
                            event.description.toLowerCase().includes(searchTerm.toLowerCase());
       const matchesCategory = selectedCategory === 'All' || event.category === selectedCategory;
-      const matchesLocation = selectedLocation === 'All' || 
+      const matchesLocation = selectedLocation === 'All' ||
                               event.location.includes(selectedLocation);
-      
+
       return matchesSearch && matchesCategory && matchesLocation;
     });
   }, [searchTerm, selectedCategory, selectedLocation]);
@@ -44,7 +44,7 @@ export default function EventsPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       <EventHeader />
-      
+
       <main>
         {/* Filters Section */}
         <motion.section
@@ -71,7 +71,7 @@ export default function EventsPage() {
                   className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                 />
               </div>
-              
+
               {/* Category Filter */}
               <div className="flex items-center gap-2">
                 <Filter className="w-5 h-5 text-gray-600" />
@@ -87,7 +87,7 @@ export default function EventsPage() {
                   ))}
                 </select>
               </div>
-              
+
               {/* Location Filter */}
               <div className="flex items-center gap-2">
                 <MapPin className="w-5 h-5 text-gray-600" />
@@ -104,7 +104,7 @@ export default function EventsPage() {
                 </select>
               </div>
             </motion.div>
-            
+
             {/* Results Count */}
             <motion.div
               initial={{ opacity: 0 }}
@@ -134,11 +134,11 @@ export default function EventsPage() {
             </div>
           </motion.section>
         )}
-        
+
         {/* Featured Event Details */}
         {featuredEvent && <EventDetails event={featuredEvent} />}
       </main>
-      
+
       <Footer />
     </div>
   );
