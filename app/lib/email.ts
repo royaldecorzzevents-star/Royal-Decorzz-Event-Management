@@ -6,18 +6,25 @@ interface EmailData {
   message: string;
 }
 
-export async function sendContactEmail(data: EmailData) {
-  const transporter = nodemailer.createTransporter({
-    service: 'gmail',
+export async function sendContactEmail(data: EmailData): Promise<{ success: boolean; error?: string }> {
+  // Use the correct nodemailer API and explicit SMTP settings
+  const transporter = nodemailer.createTransport({
+    host: 'smtp.gmail.com',
+    port: 465, // SSL
+    secure: true,
     auth: {
-      user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASS,
+      user: process.env.EMAIL_USER as string,
+      pass: process.env.EMAIL_PASS as string,
     },
+    // Keep timeouts short so we don't hang the request in dev
+    connectionTimeout: 15_000, // 15s to establish connection
+    greetingTimeout: 10_000,   // 10s waiting for greeting
+    socketTimeout: 20_000,     // 20s overall socket inactivity
   });
-  console.log(`[EMAIL] Created transporter with user: ${process.env.EMAIL_USER}`);
 
   const mailOptions = {
     from: process.env.EMAIL_USER,
+    replyTo: data.email,
     to: 'royaldecorzz.events@gmail.com',
     subject: `New Contact Form Submission from ${data.name}`,
     html: `
@@ -41,15 +48,14 @@ export async function sendContactEmail(data: EmailData) {
       </div>
     `,
   };
-  console.log(`[EMAIL] mailOptions:`, mailOptions);
 
   try {
+    await transporter.verify(); // fail fast if auth/connection is bad
     await transporter.sendMail(mailOptions);
-    console.log(`[EMAIL] transporter.sendMail called`);
     return { success: true };
   } catch (error) {
-    console.error('Email sending failed:', error);
-    console.log(`[EMAIL] sendMail error:`, error);
-    return { success: false, error: 'Failed to send email' };
+    // ECONNRESET / aborted or Gmail blocks -> surface a friendly error
+    const msg = (error as Error)?.message || 'Failed to send email';
+    return { success: false, error: msg };
   }
 }

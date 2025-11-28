@@ -62,6 +62,9 @@ export default function Home() {
           <a className="text-white/80 hover:text-white transition-colors" href="#services">
             Services
           </a>
+          <a className="text-white/80 hover:text-white transition-colors" href="/events">
+            Events
+          </a>
           <a className="text-white/80 hover:text-white transition-colors" href="#work">
             Our Work
           </a>
