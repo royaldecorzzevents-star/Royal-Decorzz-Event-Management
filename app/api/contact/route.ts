@@ -4,9 +4,9 @@ import { sendContactEmail } from '../../lib/email';
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { name, email, message } = body as { name?: string; email?: string; message?: string };
+    const { name, email, message, phonenumber } = body as { name?: string; email?: string; message?: string ; phonenumber?: number};
 
-    if (!name || !email || !message) {
+    if (!name || !email || !message || !phonenumber) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
     }
 
@@ -14,7 +14,7 @@ export async function POST(request: NextRequest) {
     const controller = new AbortController();
     const abortTimer = setTimeout(() => controller.abort(), 25_000); // abort after 25s
 
-    const result = await sendContactEmail({ name, email, message }).finally(() => clearTimeout(abortTimer));
+    const result = await sendContactEmail({ name, email, message, phonenumber }).finally(() => clearTimeout(abortTimer));
 
     if (result.success) {
       return NextResponse.json({ message: 'Email sent successfully' }, { status: 200 });

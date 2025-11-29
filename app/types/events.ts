@@ -6,6 +6,7 @@ export interface EventImage {
 
 export interface Event {
   id: string;
+  value:string;
   title: string;
   date: string;
   location: string;

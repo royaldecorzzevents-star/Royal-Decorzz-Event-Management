@@ -26,15 +26,7 @@ export default function EventsPage() {
   }, []);
 
   const filteredEvents = useMemo(() => {
-    return events.filter(event => {
-      const matchesSearch = event.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                           event.description.toLowerCase().includes(searchTerm.toLowerCase());
-      const matchesCategory = selectedCategory === 'All' || event.category === selectedCategory;
-      const matchesLocation = selectedLocation === 'All' ||
-                              event.location.includes(selectedLocation);
-
-      return matchesSearch && matchesCategory && matchesLocation;
-    });
+    return events;
   }, [searchTerm, selectedCategory, selectedLocation]);
 
   const featuredEvent = useMemo(() => {
@@ -42,25 +34,25 @@ export default function EventsPage() {
   }, [filteredEvents]);
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-black">
       <EventHeader />
 
       <main>
         {/* Filters Section */}
-        <motion.section
+        {/* <motion.section
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, ease: 'easeOut' }}
           className="bg-white py-8 shadow-sm sticky top-0 z-30"
-        >
-          <div className="container mx-auto px-6">
-            <motion.div
+        > */}
+          {/* <div className="container mx-auto px-6"> */}
+            {/* <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2, ease: 'easeOut' }}
               className="flex flex-col lg:flex-row gap-4 items-center"
             >
-              {/* Search */}
+
               <div className="relative flex-1 max-w-md">
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
                 <input
@@ -72,7 +64,7 @@ export default function EventsPage() {
                 />
               </div>
 
-              {/* Category Filter */}
+
               <div className="flex items-center gap-2">
                 <Filter className="w-5 h-5 text-gray-600" />
                 <select
@@ -88,7 +80,7 @@ export default function EventsPage() {
                 </select>
               </div>
 
-              {/* Location Filter */}
+
               <div className="flex items-center gap-2">
                 <MapPin className="w-5 h-5 text-gray-600" />
                 <select
@@ -103,19 +95,19 @@ export default function EventsPage() {
                   ))}
                 </select>
               </div>
-            </motion.div>
+            </motion.div> */}
 
             {/* Results Count */}
-            <motion.div
+            {/* <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.3, ease: 'easeOut' }}
               className="mt-4 text-sm text-gray-600"
             >
               Showing {filteredEvents.length} {filteredEvents.length === 1 ? 'event' : 'events'}
-            </motion.div>
-          </div>
-        </motion.section>
+            </motion.div> */}
+          {/* </div> */}
+        {/* </motion.section> */}
 
         {/* Events List */}
         {filteredEvents.length > 0 ? (
@@ -136,7 +128,7 @@ export default function EventsPage() {
         )}
 
         {/* Featured Event Details */}
-        {featuredEvent && <EventDetails event={featuredEvent} />}
+        {/* {featuredEvent && <EventDetails event={featuredEvent} />} */}
       </main>
 
       <Footer />

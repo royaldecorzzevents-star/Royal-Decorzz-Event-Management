@@ -4,6 +4,7 @@ interface EmailData {
   name: string;
   email: string;
   message: string;
+  phonenumber: number
 }
 
 export async function sendContactEmail(data: EmailData): Promise<{ success: boolean; error?: string }> {
@@ -35,6 +36,7 @@ export async function sendContactEmail(data: EmailData): Promise<{ success: bool
         <div style="margin: 20px 0;">
           <p><strong>Name:</strong> ${data.name}</p>
           <p><strong>Email:</strong> ${data.email}</p>
+          <p><strong>Phone Number:</strong> ${data.phonenumber}</p>
           <p><strong>Message:</strong></p>
           <p style="background-color: #f5f5f5; padding: 15px; border-radius: 5px;">
             ${data.message}

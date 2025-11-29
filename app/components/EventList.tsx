@@ -23,10 +23,10 @@ export default function EventList({ events }: EventListProps) {
           transition={{ duration: 0.6, delay: 0.2, ease: 'easeOut' }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          {/* <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             Upcoming Events
-          </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          </h2> */}
+          <p className="text-lg text-white max-w-2xl mx-auto">
             Join us for unforgettable experiences crafted with attention to every detail
           </p>
         </motion.div>
