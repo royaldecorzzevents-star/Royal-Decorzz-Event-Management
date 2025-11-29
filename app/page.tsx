@@ -5,6 +5,7 @@ import { useState } from 'react';
 import EventMiniList from './components/EventMiniList';
 import { events } from './data/events';
 import { motion } from 'framer-motion';
+import  { SpiralRing } from './components/spiralBackGround';
 
 
 export default function Home() {
@@ -55,18 +56,41 @@ export default function Home() {
 
   const boxes = Array(9).fill(0)
 
+  const text = "Elevating Moments. Crafting Memories.";
+
+
+  const container = {
+    hidden: { opacity: 0 },
+    visible: (i = 1) => ({
+      opacity: 1,
+      transition: { staggerChildren: 0.03, delayChildren: 0.04 * i },
+    }),
+  };
+
+  const child = {
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { type: "spring", damping: 12, stiffness: 100 },
+    },
+    hidden: {
+      opacity: 0,
+      x: -10,
+      transition: { type: "spring", damping: 12, stiffness: 100 },
+    },
+  };
+
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen bg-gradient-to-br from-black via-black to-[#5a1d56]">
       <motion.section
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6, ease: 'easeOut' }}
       >
-        <header className="px-6 md:px-10 py-6 flex items-center justify-between">
-          <div className="flex items-center gap-3">
+        <header className="px-6 md:px-10 py-6 flex items-center justify-between mb-2 sticky z-90 w-full">
+          <div className="flex items-center gap-3 ">
             <div
-              className="h-10 w-10 rounded-full"
-              style={{ background: '' }}
+              className="h-10 w-10 rounded-full flex items-center justify-center p-1 bg-[#C6C7BD]"
             >
               <Image src="/logo.png" alt="Logo" width={32} height={32} />
             </div>
@@ -112,11 +136,20 @@ export default function Home() {
           >
             <div className="relative z-10 grid md:grid-cols-2 gap-10 p-8 md:p-14">
               <div className="flex flex-col justify-center">
-                <h1 className="text-4xl md:text-6xl font-extrabold leading-tight text-white">
+                <h1 className="text-4xl md:text-6xl font-extrabold leading-tight bg-gradient-to-r from-[#b98f37] to-[#5a1d56] bg-clip-text text-transparent">
                   Royal Decorzz
-                  <span className="block text-2xl md:text-3xl font-normal mt-3 text-white/80">
-                    Elevating Moments. Crafting Memories.
-                  </span>
+                  <motion.span
+                    className="block text-2xl md:text-3xl font-normal mt-3 text-white/80"
+                    variants={container}
+                    initial="hidden"
+                    animate="visible"
+                  >
+                    {text.split("").map((char, index) => (
+                      <motion.span key={index} variants={child}>
+                        {char}
+                      </motion.span>
+                    ))}
+                  </motion.span>
                 </h1>
                 <p className="mt-6 text-base md:text-lg text-white/80">
                   A boutique event management studio turning your vision into reality—weddings,
@@ -149,24 +182,9 @@ export default function Home() {
               <div className="relative">
                 <div className="absolute -inset-1 rounded-3xl blur-2xl opacity-40"
                   style={{ background: 'linear-gradient(135deg, rgba(90,29,86,0.6), rgba(0,0,0,0.6))' }} />
-                {/* <div className="relative rounded-3xl overflow-hidden border border-white/10">
-                  <div className="aspect-[4/3] bg-gradient-to-br from-[#5a1d56] to-black">
-                    <div className="h-full w-full grid grid-cols-3 gap-1 p-1">
-                    <div className="bg-white/5 rounded" />
-                    <div className="bg-white/10 rounded" />
-                    <div className="bg-white/5 rounded" />
-                    <div className="bg-white/10 rounded" />
-                    <div className="bg-white/5 rounded" />
-                    <div className="bg-white/10 rounded" />
-                    <div className="bg-white/5 rounded" />
-                    <div className="bg-white/10 rounded" />
-                    <div className="bg-white/5 rounded" />
-                  </div>
-                  </div>
-                </div> */}
                 <div className="relative rounded-3xl overflow-hidden border border-white/10">
                   <div className="aspect-[4/3] bg-gradient-to-br from-[#5a1d56] to-black">
-                    <div className="h-full w-full grid grid-cols-3 gap-1 p-1">
+                    {/* <div className="h-full w-full grid grid-cols-3 gap-1 p-1">
                       {boxes.map((_, index) => (
                         <motion.div
                           key={index}
@@ -181,7 +199,8 @@ export default function Home() {
                           }}
                         />
                       ))}
-                    </div>
+                    </div> */}
+                    <SpiralRing/>
                   </div>
                 </div>
 
@@ -214,13 +233,10 @@ export default function Home() {
               </div>
               <a
                 href="/events"
-                className="hidden md:inline-flex rounded-full px-5 py-2.5 text-sm font-semibold text-white"
-                style={{ backgroundColor: '#5a1d56' }}
+                className="inline-flex rounded-full px-5 py-2.5 text-sm font-semibold text-white md:bg-[#5a1d56]"
               >
-                View All
+                View
               </a>
-
-
             </div>
 
             <motion.section
