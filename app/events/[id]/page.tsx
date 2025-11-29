@@ -307,7 +307,7 @@ export default function EventPage({ params }: EventPageProps) {
       </motion.section>
 
       {/* Related Events */}
-      {relatedEvents.length > 0 && (
+      {/* {relatedEvents.length > 0 && (
         <motion.section
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -398,7 +398,7 @@ export default function EventPage({ params }: EventPageProps) {
             </div>
           </div>
         </motion.section>
-      )}
+      )} */}
     </div>
   );
 }

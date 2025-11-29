@@ -204,10 +204,24 @@ export default function Home() {
           transition={{ duration: 0.6, ease: 'easeOut' }}
         >
           <section id="services" className="mt-16 md:mt-24">
-            <h2 className="text-white text-2xl md:text-3xl font-bold">Signature Services</h2>
-            <p className="text-white/70 mt-2 max-w-2xl">
-              Tailored experiences infused with artistry, logistics, and a royal touch.
-            </p>
+            <div className='flex justify-between items-center'>
+              <div>
+                <h2 className="text-white text-2xl md:text-3xl font-bold">Signature Services</h2>
+                <p className="text-white/70 mt-2 max-w-2xl">
+                  Tailored experiences infused with artistry, logistics, and a royal touch.
+                </p>
+
+              </div>
+              <a
+                href="/events"
+                className="hidden md:inline-flex rounded-full px-5 py-2.5 text-sm font-semibold text-white"
+                style={{ backgroundColor: '#5a1d56' }}
+              >
+                View All
+              </a>
+
+
+            </div>
 
             <motion.section
               initial={{ opacity: 0 }}

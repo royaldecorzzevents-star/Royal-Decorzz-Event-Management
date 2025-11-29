@@ -24,14 +24,14 @@ export default function EventHeader() {
             <motion.div
               // animate={{ rotate: 360 }}
               transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-              className="p-3 bg-purple-600/20 rounded-full backdrop-blur-sm"
+              className="p-3 bg-purple-600/10 rounded-full backdrop-blur-sm"
             >
               {/* <Sparkles className="w-8 h-8 text-[#5a1d56]" /> */}
               <Image src="/logo.png" alt="Logo" width={32} height={32} />
             </motion.div>
           </div>
 
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-[#b98f37] to-[#5a1d56] bg-clip-text text-transparent">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-[#b98f37] to-[#ffffff] bg-clip-text text-transparent">
             Royal Events
           </h1>
 
