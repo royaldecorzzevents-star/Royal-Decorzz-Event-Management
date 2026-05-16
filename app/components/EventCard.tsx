@@ -4,7 +4,10 @@ import { motion } from 'framer-motion';
 import { Calendar, MapPin, Tag, Users } from 'lucide-react';
 import Link from 'next/link';
 import EventCarousel from './EventCarousel';
+import StorageEventCarousel from './StorageEventCarousel';
 import { Event } from '../types/events';
+import { getEventHref } from '@/lib/event-routes';
+import { getEventStorageFolder } from '@/lib/supabase/storage-images';
 
 interface EventCardProps {
   event: Event;
@@ -12,6 +15,8 @@ interface EventCardProps {
 }
 
 export default function EventCard({ event, index }: EventCardProps) {
+  const storageFolder = getEventStorageFolder(event.value);
+
   return (
     <motion.article
       initial={{ opacity: 0, y: 30 }}
@@ -28,10 +33,18 @@ export default function EventCard({ event, index }: EventCardProps) {
       }}
       className=" rounded-2xl p-1 hover:shadow-2xl hover:border-[#b98f37] hover:shadow-[#b98f37] transition-all duration-300 overflow-hidden group cursor-pointer border border-[#5a1d56] shadow-lg"
     >
-      <Link href={`/events/${event.value}`}>
+      <Link href={getEventHref(event)}>
         {/* Image Carousel */}
         <div className="relative">
-          <EventCarousel images={event.images} title={event.title} />
+          {storageFolder ? (
+            <StorageEventCarousel
+              folder={storageFolder}
+              title={event.title}
+              fallbackImages={event.images}
+            />
+          ) : (
+            <EventCarousel images={event.images} title={event.title} />
+          )}
           {event.featured && (
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}

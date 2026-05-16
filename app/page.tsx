@@ -1,12 +1,14 @@
 'use client';
 
-import Image from 'next/image';
 import { useState } from 'react';
 import EventMiniList from './components/EventMiniList';
+import WeddingGallery from './components/WeddingGallery';
+import Logo from './components/Logo';
 import { events } from './data/events';
 import { motion } from 'framer-motion';
-import { MapPin, MessageCircle, Instagram } from 'lucide-react';
+import { MessageCircle, Instagram } from 'lucide-react';
 import { SpiralRing } from './components/spiralBackGround';
+import OurStoreSection from './components/OurStoreSection';
 
 
 export default function Home() {
@@ -90,10 +92,8 @@ export default function Home() {
       >
         <header className="px-6 md:px-10 py-6 flex items-center justify-between mb-2 sticky z-90 w-full">
           <div className="flex items-center gap-3 ">
-            <div
-              className="h-10 w-10 rounded-full flex items-center justify-center p-1 bg-[#C6C7BD]"
-            >
-              <Image src="/logo.png" alt="Logo" width={32} height={32} />
+            <div className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-[#C6C7BD] p-1">
+              <Logo size={32} />
             </div>
             <span className="text-white text-xl font-bold tracking-wide">
               Royal Decorzz
@@ -276,17 +276,7 @@ export default function Home() {
               </a>
             </div>
             <div className="mt-8 grid gap-4 md:grid-cols-3">
-              {[1, 2, 3].map((i) => (
-                <div key={i} className="relative overflow-hidden rounded-2xl border border-white/10">
-                  <div className="aspect-[4/3] bg-gradient-to-br from-black to-[#5a1d56]">
-                    <div className="h-full w-full flex items-end p-4">
-                      <div className="rounded-lg bg-black/50 px-3 py-2 text-white text-sm border border-white/10">
-                        Event #{i}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
+              <WeddingGallery />
             </div>
           </section>
         </motion.section>
@@ -452,42 +442,7 @@ export default function Home() {
             </div>
           </section>
         </motion.section>
-        <motion.section
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-50px' }}
-          transition={{ duration: 0.6, ease: 'easeOut' }}
-          className="relative overflow-hidden rounded-3xl border border-white/10 mt-12"
-          style={{ background: 'radial-gradient(1200px 600px at 80% -10%, rgba(90,29,86,0.35), transparent), radial-gradient(900px 400px at -10% 100%, rgba(90,29,86,0.25), transparent)' }}
-        >
-          <div className="relative z-10 p-8 md:p-10">
-            <div className="text-center mb-6">
-              <h3 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-[#b98f37] to-[#5a1d56] bg-clip-text text-transparent">
-                Our Store
-              </h3>
-              <a
-                href="https://www.google.com/maps/place/55,+Sowdambika+Nagar,+Samichettipalayam,+Coimbatore,+Tamil+Nadu+641047"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 mt-3 text-white/80 hover:text-white transition-colors text-sm md:text-base"
-              >
-                <MapPin className="w-4 h-4 shrink-0" style={{ color: '#5a1d56' }} />
-                <span>55, Sowdambika Nagar, Samichettipalayam, Coimbatore, Tamil Nadu 641047</span>
-              </a>
-            </div>
-            <div className="rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d244.64535110289793!2d76.93477188797549!3d11.163509107238788!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba8f143ddc2f05b%3A0xc01f0d2fdd52d9cc!2s55%2C%20Sowdambika%20Nagar%2C%20Samichettipalayam%2C%20Coimbatore%2C%20Tamil%20Nadu%20641047!5e0!3m2!1sen!2sin!4v1769689024599!5m2!1sen!2sin"
-                width="100%"
-                height="450"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Royal Decorzz store location"
-                className="block"
-              />
-            </div>
-          </div>
-        </motion.section>
+        <OurStoreSection />
       </main>
 
 

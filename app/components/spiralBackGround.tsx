@@ -131,11 +131,11 @@ export function SpiralRing() {
                         <div className="absolute inset-0  rounded-2xl blur-2xl opacity-50 group-hover:opacity-70 transition-opacity duration-500 shadow-[0_0_35px_10px_rgba(0,200,255,0.7)]" />
 
                         {/* Image */}
-                        <div className="relative w-40 h-40 rounded-2xl overflow-hidden ">
+                        <div className="relative h-40 w-40 overflow-hidden rounded-full">
                             <img
                                 src="/logo.png"
                                 alt="Spiral center"
-                                className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700"
+                                className="h-full w-full rounded-full object-cover transition-transform duration-700 group-hover:scale-110"
                             />
 
                             {/* Overlay gradient */}

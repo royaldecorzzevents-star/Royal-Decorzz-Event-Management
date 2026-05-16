@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Event } from '../types/events';
+import { getEventHref } from '@/lib/event-routes';
 
 interface EventListProps {
     events: Event[];
@@ -12,7 +13,7 @@ export default function EventMiniList({ events }: EventListProps) {
 
 
     const handleClick = (event: Event) => {
-        window.location.href = `/events/${event.value}`;
+        window.location.href = getEventHref(event);
     };
 
     return (

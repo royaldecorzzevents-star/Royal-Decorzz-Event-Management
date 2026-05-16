@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Calendar, MapPin, Sparkles } from 'lucide-react';
-import Image from 'next/image';
+import Logo from './Logo';
 
 export default function EventHeader() {
   return (
@@ -22,12 +22,10 @@ export default function EventHeader() {
         >
           <div className="flex justify-center mb-6">
             <motion.div
-              // animate={{ rotate: 360 }}
               transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-              className="p-3 bg-purple-600/10 rounded-full backdrop-blur-sm"
+              className="h-14 w-14 overflow-hidden rounded-full bg-purple-600/10 p-2 backdrop-blur-sm"
             >
-              {/* <Sparkles className="w-8 h-8 text-[#5a1d56]" /> */}
-              <Image src="/logo.png" alt="Logo" width={32} height={32} />
+              <Logo size={40} className="h-full w-full" />
             </motion.div>
           </div>
 

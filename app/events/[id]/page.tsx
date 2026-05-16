@@ -1,18 +1,23 @@
 'use client';
 
+import { use } from 'react';
 import { motion } from 'framer-motion';
 import { notFound } from 'next/navigation';
 import { Calendar, MapPin, Tag, Users, Clock, ArrowLeft, Share2, Heart } from 'lucide-react';
 import Link from 'next/link';
 import EventCarousel from '@/app/components/EventCarousel';
+import StorageEventCarousel from '@/app/components/StorageEventCarousel';
+import { getEventStorageFolder } from '@/lib/supabase/storage-images';
 import { events } from '@/app/data/events';
+import { findEventByRouteParam } from '@/lib/event-routes';
 
 interface EventPageProps {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }
 
 export default function EventPage({ params }: EventPageProps) {
-  const event = events.find(e => e.value.toLowerCase() === params.id.toLowerCase());
+  const { id } = use(params);
+  const event = findEventByRouteParam(id);
 
   if (!event) {
     notFound();
@@ -158,7 +163,19 @@ export default function EventPage({ params }: EventPageProps) {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.3, ease: 'easeOut' }}
             >
-              <EventCarousel images={event.images} title={event.title} />
+              {(() => {
+                const storageFolder = getEventStorageFolder(event.value);
+                if (storageFolder) {
+                  return (
+                    <StorageEventCarousel
+                      folder={storageFolder}
+                      title={event.title}
+                      fallbackImages={event.images}
+                    />
+                  );
+                }
+                return <EventCarousel images={event.images} title={event.title} />;
+              })()}
             </motion.div>
           </div>
         </div>
