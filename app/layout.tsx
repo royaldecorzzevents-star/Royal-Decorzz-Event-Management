@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   title: "Royal Decorzz",
   description: "Wedding and Event decors",
   icons: {
-    icon: '/icon.png',
+    icon: '/favicon.ico',
   },
 };
 
