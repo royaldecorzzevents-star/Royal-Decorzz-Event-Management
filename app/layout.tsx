@@ -16,6 +16,9 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   title: "Royal Decorzz",
   description: "Wedding and Event decors",
+  icons: {
+    icon: '/icon.png',
+  },
 };
 
 export default function RootLayout({

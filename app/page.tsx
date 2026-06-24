@@ -92,7 +92,7 @@ export default function Home() {
       >
         <header className="px-6 md:px-10 py-6 flex items-center justify-between mb-2 sticky z-90 w-full">
           <div className="flex items-center gap-3 ">
-            <div className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-[#C6C7BD] p-1">
+            <div className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full  p-1">
               <Logo size={32} />
             </div>
             <span className="text-white text-xl font-bold tracking-wide">
