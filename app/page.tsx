@@ -395,7 +395,7 @@ export default function Home() {
                   </form>
                 </div>
                 <div
-                  className="p-8 md:p-12 text-white bg-[linear-gradient(rgba(90,29,86,0.5),_rgba(0,0,0,0.7)),url('/logo.png')] bg-contain bg-right-bottom bg-blend-multiply bg-no-repeat"
+                  className="p-8 md:p-12 text-white bg-[linear-gradient(rgba(90,29,86,0.5),_rgba(0,0,0,0.7)),url('/logo.png')] bg-cover bg-blend-multiply bg-repeat-y "
                 // style={{ background: 'linear-gradient(135deg, #5a1d56 0%, #000000 100%)' }}
                 >
                   <h4 className="text-xl font-semibold">Contact</h4>

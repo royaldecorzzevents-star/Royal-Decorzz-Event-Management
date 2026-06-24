@@ -28,115 +28,176 @@ export default function OurStoreSection() {
         background:
           'radial-gradient(900px 500px at 0% 0%, rgba(185,143,55,0.12), transparent), radial-gradient(1000px 600px at 100% 100%, rgba(90,29,86,0.4), transparent)',
       }}
-    >
-      <motion.div className="relative z-10 p-6 md:p-10 lg:p-12">
-        <motion.div className="mb-8 flex flex-col gap-3 md:mb-10 md:flex-row md:items-end md:justify-between">
-          <motion.div>
-            <motion.span className="inline-flex items-center gap-2 rounded-full border border-[#b98f37]/30 bg-[#b98f37]/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-[#b98f37]">
-              <MapPin className="h-3.5 w-3.5" />
-              Find us
-            </motion.span>
-            <h3 className="mt-4 bg-gradient-to-r from-[#b98f37] via-white to-[#5a1d56] bg-clip-text text-3xl font-bold text-transparent md:text-4xl">
-              Our Store
-            </h3>
-            <p className="mt-2 max-w-lg text-sm text-white/65 md:text-base">
-              Visit our studio in Coimbatore or reach out—we bring celebrations to life across Tamil Nadu.
-            </p>
-          </motion.div>
-          <span className="inline-flex w-fit items-center rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm text-white/80 backdrop-blur-sm">
-            Serving all of Tamil Nadu
-          </span>
-        </motion.div>
+    > <div className="relative z-10 p-6 md:p-10 lg:p-12">
+        {/* Header */} <div className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between"> <div> <span className="inline-flex items-center gap-2 rounded-full border border-[#b98f37]/30 bg-[#b98f37]/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-[#b98f37]"> <MapPin className="h-3.5 w-3.5" />
+          Find Us </span>
 
-        <motion.div className="grid gap-6 lg:grid-cols-5 lg:gap-8">
-          <motion.div className="flex flex-col gap-4 lg:col-span-2">
-            <motion.div className="group rounded-2xl border border-white/10 bg-black/40 p-5 backdrop-blur-md transition-colors hover:border-[#b98f37]/30">
-              <motion.div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#b98f37]/20 to-[#5a1d56]/40">
-                <MapPin className="h-5 w-5 text-[#b98f37]" />
-              </motion.div>
-              <h4 className="text-lg font-semibold text-white">Store address</h4>
-              <address className="mt-3 space-y-1 text-sm not-italic leading-relaxed text-white/75">
+          <h2 className="mt-4 bg-gradient-to-r from-[#b98f37] via-white to-[#5a1d56] bg-clip-text text-4xl font-bold text-transparent md:text-5xl">
+            Visit Our Studio
+          </h2>
+
+          <p className="mt-3 max-w-xl text-white/65">
+            Creating unforgettable weddings, birthdays, corporate events and
+            luxury celebrations across Tamil Nadu.
+          </p>
+        </div>
+
+          <span className="inline-flex w-fit rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm text-white/80 backdrop-blur-md">
+            Serving All Tamil Nadu
+          </span>
+        </div>
+
+        {/* Stats */}
+        <div className="mb-8 flex flex-wrap gap-3">
+          <div className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/80">
+            🎉 500+ Events Decorated
+          </div>
+
+          <div className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/80">
+            💍 Wedding Specialists
+          </div>
+
+          <div className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/80">
+            ⭐ Premium Event Styling
+          </div>
+        </div>
+
+        {/* Main Layout */}
+        <div className="grid gap-6 lg:grid-cols-3">
+          {/* Cards */}
+          <div className="grid gap-4 md:grid-cols-2 lg:col-span-2">
+            {/* Address */}
+            <motion.div
+              whileHover={{ y: -4 }}
+              className="group rounded-3xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-xl transition-all duration-500 hover:border-[#b98f37]/40 hover:shadow-[0_20px_60px_rgba(185,143,55,0.12)]"
+            >
+              <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-[#b98f37]/20 to-[#5a1d56]/20">
+                <MapPin className="h-6 w-6 text-[#b98f37]" />
+              </div>
+
+              <h3 className="mb-3 text-lg font-semibold text-white">
+                Visit Our Studio
+              </h3>
+
+              <address className="space-y-1 text-sm not-italic text-white/70">
                 {ADDRESS_LINES.map((line) => (
                   <p key={line}>{line}</p>
                 ))}
               </address>
             </motion.div>
 
-            <motion.div className="group rounded-2xl border border-white/10 bg-black/40 p-5 backdrop-blur-md transition-colors hover:border-[#5a1d56]/50">
-              <motion.div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#5a1d56]/40 to-black">
-                <Clock className="h-5 w-5 text-white/90" />
-              </motion.div>
-              <h4 className="text-lg font-semibold text-white">Opening hours</h4>
-              <p className="mt-2 text-2xl font-bold text-white">8:00 AM – 8:00 PM</p>
-              <p className="mt-1 text-sm text-white/55">Open every day of the week</p>
+            {/* Hours */}
+            <motion.div
+              whileHover={{ y: -4 }}
+              className="group rounded-3xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-xl transition-all duration-500 hover:border-[#5a1d56]/40 hover:shadow-[0_20px_60px_rgba(90,29,86,0.15)]"
+            >
+              <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-[#5a1d56]/30 to-black">
+                <Clock className="h-6 w-6 text-white" />
+              </div>
+
+              <h3 className="mb-2 text-lg font-semibold text-white">
+                Opening Hours
+              </h3>
+
+              <p className="text-3xl font-bold text-white">
+                8 AM – 8 PM
+              </p>
+
+              <p className="mt-2 text-sm text-white/55">
+                Open every day
+              </p>
             </motion.div>
 
-            <motion.div className="group rounded-2xl border border-white/10 bg-black/40 p-5 backdrop-blur-md transition-colors hover:border-white/20">
-              <motion.div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-white/5">
-                <Phone className="h-5 w-5 text-white/80" />
-              </motion.div>
-              <h4 className="text-lg font-semibold text-white">Call us</h4>
+            {/* Phone */}
+            <motion.div
+              whileHover={{ y: -4 }}
+              className="group rounded-3xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-xl transition-all duration-500 hover:border-[#b98f37]/40 hover:shadow-[0_20px_60px_rgba(185,143,55,0.12)]"
+            >
+              <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-white/5">
+                <Phone className="h-6 w-6 text-white" />
+              </div>
+
+              <h3 className="mb-2 text-lg font-semibold text-white">
+                Call Us
+              </h3>
+
               <a
                 href="tel:+916383503223"
-                className="mt-2 inline-block text-lg font-medium text-[#b98f37] transition-colors hover:text-white"
+                className="text-2xl font-bold text-[#b98f37] transition-colors hover:text-white"
               >
                 +91 63835 03223
               </a>
+
+              <p className="mt-2 text-sm text-white/55">
+                Booking & enquiries
+              </p>
             </motion.div>
 
-            <motion.a
-              href={MAP_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-sm font-semibold text-white shadow-lg"
-              style={{ background: 'linear-gradient(135deg, #b98f37 0%, #5a1d56 100%)' }}
+            {/* Service Area */}
+            <motion.div
+              whileHover={{ y: -4 }}
+              className="group rounded-3xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-xl transition-all duration-500 hover:border-[#5a1d56]/40 hover:shadow-[0_20px_60px_rgba(90,29,86,0.15)]"
             >
-              <Navigation className="h-4 w-4" />
-              Get directions
-            </motion.a>
-          </motion.div>
+              <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-[#5a1d56]/30 to-black">
+                <Navigation className="h-6 w-6 text-white" />
+              </div>
 
-          <motion.div className="relative lg:col-span-3">
-            <motion.div className="relative overflow-hidden rounded-2xl border border-white/10 shadow-2xl">
-              <motion.div className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-t from-black/50 via-transparent to-black/20" />
+              <h3 className="mb-2 text-lg font-semibold text-white">
+                We Travel To You
+              </h3>
 
-              <motion.div
-                className="pointer-events-none absolute left-1/2 top-1/2 z-20 -translate-x-1/2 -translate-y-full"
-                animate={{ y: [0, -6, 0] }}
-                transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-              >
-                <motion.div className="relative">
-                  <span className="absolute -inset-3 animate-pulse rounded-full bg-[#b98f37]/30 blur-md" />
-                  <span className="relative flex h-12 w-12 items-center justify-center rounded-full border-2 border-[#b98f37] bg-[#5a1d56] shadow-xl">
-                    <MapPin className="h-6 w-6 text-[#b98f37]" fill="currentColor" />
-                  </span>
-                </motion.div>
-              </motion.div>
+              <p className="text-sm leading-relaxed text-white/70">
+                Weddings, receptions, birthdays, engagements and corporate
+                events across Tamil Nadu.
+              </p>
 
-              <motion.div className="absolute bottom-4 left-4 right-4 z-20 flex flex-wrap items-center justify-between gap-2">
-                <span className="rounded-lg border border-white/10 bg-black/60 px-3 py-1.5 text-xs font-medium text-white backdrop-blur-md">
-                  Royal Decorzz
-                </span>
-                <span className="rounded-lg border border-[#b98f37]/30 bg-[#b98f37]/10 px-3 py-1.5 text-xs font-medium text-[#b98f37] backdrop-blur-md">
-                  Coimbatore
-                </span>
-              </motion.div>
-
-              <iframe
-                src={MAP_EMBED_URL}
-                width="100%"
-                height="420"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Royal Decorzz store location"
-                className="block min-h-[280px] grayscale-[20%] contrast-[1.05] transition-[filter] duration-500 hover:grayscale-0 md:min-h-[420px]"
-              />
+              <span className="mt-4 inline-flex rounded-full border border-[#b98f37]/20 bg-[#b98f37]/10 px-3 py-1 text-xs font-medium text-[#b98f37]">
+                Statewide Service
+              </span>
             </motion.div>
+          </div>
+
+          {/* Map */}
+          <motion.div
+            whileHover={{ scale: 1.01 }}
+            className="overflow-hidden rounded-3xl border border-white/10 bg-black/20 backdrop-blur-xl"
+          >
+            <iframe
+              src={MAP_EMBED_URL}
+              loading="lazy"
+              title="Royal Decorzz Location"
+              className="h-[450px] w-full"
+            />
+
+            <div className="flex items-center justify-between border-t border-white/10 bg-black/40 p-4">
+              <div>
+                <p className="text-sm font-semibold text-white">
+                  Royal Decorzz
+                </p>
+
+                <p className="text-xs text-white/60">
+                  Coimbatore, Tamil Nadu
+                </p>
+              </div>
+
+              <motion.a
+                href={MAP_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.96 }}
+                className="inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold text-white"
+                style={{
+                  background:
+                    'linear-gradient(135deg,#b98f37 0%,#5a1d56 100%)',
+                }}
+              >
+                <Navigation className="h-4 w-4" />
+                Directions
+              </motion.a>
+            </div>
           </motion.div>
-        </motion.div>
-      </motion.div>
-    </motion.section>
-  )
+        </div>
+      </div>
+    </motion.section>)
 }
